@@ -17,13 +17,25 @@
             <h2>{{ post.title }}</h2>
             <p><em>Written by {{ post.author }}</em></p>
             <p>{{ post.content }}</p>
+            <form action="{{ url_for('like', post_id=post.id) }}" method="POST" class="like-form">
+                <button type="submit" class="like-btn">👍 {{ post.get('likes', 0) }}</button>
+            </form>
             <a href="{{ url_for('update', post_id=post.id) }}" class="update-btn">Update</a>
             <a href="{{ url_for('delete', post_id=post.id) }}" class="delete-btn">Delete</a>
+            <form action="{{ url_for('comment', post_id=post.id) }}" method="post">
+                <input type="text" name="comment" placeholder="Add a comment">
+                <button type="submit">Comment</button>
+            </form>
+            <div class="comments">
+                <h3>Comments</h3>
+                <ul>
+                    {% for comment in post.get('comments', []) %}
+                    <li>{{ comment }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
-        <hr>
-        {% endfor %}
+         {% endfor %}
     </div>
-
-
 </body>
 </html>

@@ -3,12 +3,21 @@
         "id": "0485cd94-0f04-4ee8-80c9-8749d2a25293",
         "title": "New post, new id - updated",
         "author": "Code Cabe",
-        "content": "This is a new post with ne uuid!"
+        "content": "This is a new post with ne uuid!",
+        "likes": 6,
+        "comments": [
+            "This is really interesting",
+            "It really is, yes"
+        ]
     },
     {
         "id": "7d768096-c24e-4a31-85c4-42835c50dc7f",
         "title": "Never a dull moment",
         "author": "Boring Bob",
-        "content": "Again, a post with uuid, makes the crowd go wild!"
+        "content": "Again, a post with uuid, makes the crowd go wild!",
+        "likes": 3,
+        "comments": [
+            "Way too boring!"
+        ]
     }
 ]
