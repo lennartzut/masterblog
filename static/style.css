@@ -61,3 +61,16 @@ input[type="submit"]:hover {
     text-decoration: none;
     color: #007BFF;
 }
+
+.delete-btn {
+    background-color: red;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}

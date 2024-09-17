@@ -1,20 +1,14 @@
 [
     {
-        "author": "John Doe",
-        "content": "This is my first post.",
-        "id": 1,
-        "title": "First Post"
+        "id": "0485cd94-0f04-4ee8-80c9-8749d2a25293",
+        "title": "New post, new id",
+        "author": "Code Cabe",
+        "content": "This is a new post with ne uuid!"
     },
     {
-        "author": "Jane Doe",
-        "content": "This is another post.",
-        "id": 2,
-        "title": "Second Post"
-    },
-    {
-        "id": 3,
-        "title": "Third Post",
-        "author": "Joe Jane",
-        "content": "This is the third blog post."
+        "id": "7d768096-c24e-4a31-85c4-42835c50dc7f",
+        "title": "Never a dull moment",
+        "author": "Boring Bob",
+        "content": "Again, a post with uuid, makes the crowd go wild!"
     }
 ]
