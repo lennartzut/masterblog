@@ -10,10 +10,6 @@ def index():
     """
     Display the list of all blog posts.
 
-    This route handles GET requests to the root URL. It loads all
-    blog posts from the JSON file and renders the index.html
-    template with these posts.
-
     Returns:
         str: The rendered HTML template for the index page.
     """
@@ -26,11 +22,6 @@ def add():
     """
     Add a new blog post.
 
-    Handles both GET and POST requests. For GET requests,
-    it renders the add.html form for creating a new blog post. For
-    POST requests, it processes the form data, creates a new blog
-    post, saves it to the JSON file, and redirects to the index page.
-
     Returns: str: The rendered HTML template for the add form or a
     redirect URL.
     """
@@ -40,7 +31,8 @@ def add():
             'id': str(uuid.uuid4()),
             'title': request.form.get('title'),
             'author': request.form.get('author'),
-            'content': request.form.get('content')
+            'content': request.form.get('content'),
+            'likes': 0
         }
         blog_posts.append(new_post)
         save_blog_posts(blog_posts)
@@ -52,10 +44,6 @@ def add():
 def delete(post_id):
     """
     Delete a blog post by its ID.
-
-    Handles DELETE requests to remove a specific blog post
-    identified by post_id. After deletion, it updates the JSON
-    file and redirects to the index page.
 
     Args:
         post_id (str): The ID of the blog post to be deleted.
@@ -75,13 +63,6 @@ def update(post_id):
     """
     Update an existing blog post.
 
-    Handles both GET and POST requests. For GET requests, it loads
-    the specific blog post by its ID and renders the update.html
-    template pre-filled with the post's current details. For POST
-    requests, it updates the blog post with the new data provided
-    in the form, saves the changes to the JSON file, and redirects
-    to the index page.
-
     Args:
         post_id (str): The ID of the blog post to be updated.
 
@@ -100,6 +81,49 @@ def update(post_id):
         save_blog_posts(blog_posts)
         return redirect(url_for('index'))
     return render_template('update.html', post=post)
+
+
+@app.route('/like/<post_id>', methods=['POST'])
+def like(post_id):
+    """
+    Increment the 'likes' of a specific blog post.
+
+    Args:
+        post_id (str): The ID of the blog post to be liked.
+
+    Returns:
+        str: Redirects to the index page.
+    """
+    blog_posts = load_blog_posts()
+    for post in blog_posts:
+        if post['id'] == post_id:
+            post['likes'] = post.get('likes', 0) + 1
+            break
+    save_blog_posts(blog_posts)
+    return redirect(url_for('index'))
+
+
+@app.route('/comment/<post_id>', methods=['POST'])
+def comment(post_id):
+    """
+    Add a comment to a specific blog post.
+
+    Args:
+        post_id (str): The ID of the blog post to be commented on.
+
+    Returns:
+        str: Redirects to the index page.
+    """
+    blog_posts = load_blog_posts()
+    comment_text = request.form.get('comment')
+    for post in blog_posts:
+        if post['id'] == post_id:
+            if 'comments' not in post:
+                post['comments'] = []
+            post['comments'].append(comment_text)
+            break
+    save_blog_posts(blog_posts)
+    return redirect(url_for('index'))
 
 
 def load_blog_posts():
