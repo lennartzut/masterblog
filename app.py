@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, redirect, url_for
 import json
+import uuid
 
 app = Flask(__name__)
 
@@ -13,28 +14,26 @@ def index():
 @app.route('/add', methods=['GET', 'POST'])
 def add():
     if request.method == 'POST':
-        title = request.form.get('title')
-        author = request.form.get('author')
-        content = request.form.get('content')
-
         blog_posts = load_blog_posts()
-
         new_post = {
-            'id': len(blog_posts) + 1,
-            'title': title,
-            'author': author,
-            'content': content
+            'id': str(uuid.uuid4()),
+            'title': request.form.get('title'),
+            'author': request.form.get('author'),
+            'content': request.form.get('content')
         }
-
         blog_posts.append(new_post)
-
         save_blog_posts(blog_posts)
-
-        # Redirect back to the index route
         return redirect(url_for('index'))
-
-        # If it's a GET request, display the form
     return render_template('add.html')
+
+
+@app.route('/delete/<post_id>')
+def delete(post_id):
+    blog_posts = load_blog_posts()
+    blog_posts = [post for post in blog_posts if
+                  post['id'] != post_id]
+    save_blog_posts(blog_posts)
+    return redirect(url_for('index'))
 
 
 def load_blog_posts():
