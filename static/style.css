@@ -74,3 +74,16 @@ input[type="submit"]:hover {
 .delete-btn:hover {
     background-color: darkred;
 }
+
+.update-btn {
+    background-color: green;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.update-btn:hover {
+    background-color: darkgreen;
+}
