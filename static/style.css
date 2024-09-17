@@ -25,3 +25,39 @@ h1 {
 .post p {
     margin: 10px 0;
 }
+
+.post-form {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.navigation {
+    margin-top: 20px;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #007BFF;
+}
