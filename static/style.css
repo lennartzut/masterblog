@@ -112,3 +112,78 @@ input[type="submit"]:hover {
 .like-btn:hover {
     background-color: #005f8c;
 }
+
+.comment-section {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.comment-section h3 {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #4F4F4F;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.comment-list {
+    list-style: none;
+    padding: 0;
+}
+
+.comment-list li {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+    margin-bottom: 10px;
+}
+
+.comment-author {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+.comment-text {
+    margin-top: 5px;
+    color: #555;
+    font-size: 14px;
+}
+
+.comment-form {
+    margin-top: 20px;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-size: 14px;
+}
+
+.comment-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.comment-form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.comment-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
